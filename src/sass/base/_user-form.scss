@@ -1,0 +1,428 @@
+.user-form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    height: 100vh;
+
+    .user-form {
+        width: 70%; 
+        height: 70%;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
+        display: flex;
+        background-color: var(--bg-div);
+        
+        .left {
+            width: 75%;
+            height: 100%;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .table-container {
+                width: 80%;
+                height: 80%;
+            }
+        }
+
+        .right {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;
+            border-left: thin solid white;
+
+            p {
+                font-weight: bold;
+            }
+
+            .headers {
+                color: white;
+            }
+
+            .header-two {
+                opacity: 0;
+            }
+
+            .header-three {
+                opacity: 0;
+            }
+
+            .row-one {
+                width: 80%;
+                height: 20%;
+                display: flex;
+                justify-content: space-evenly;
+                align-items: center;
+
+                .ad-links {
+                    font-size: 0px;
+                }
+
+                .create,
+                .delete,
+                .existing {
+                    height: 90%;
+                    width: 25%;
+                    border-radius: 8px;
+                    border: none;
+                    background-color: var(--secondary);
+
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+
+                    font-weight: 700;
+
+                    cursor: pointer;
+                }
+
+                .user-creation-selection-active {
+                   background-color: white;
+                }
+
+                .no-hover-effect {
+                    pointer-events: none; 
+                }
+
+                .create:hover:not(.user-creation-selection-active),
+                .delete:hover:not(.user-creation-selection-active),
+                .existing:hover:not(.user-creation-selection-active) {
+                    background-color: var(--primary);
+                }
+            }
+
+            .row-two {
+                width: 80%;
+                height: 20%;
+                display: flex;
+                z-index: 100;
+
+                .left {
+                    flex: 1;
+                    
+
+                    .select-box {
+                        display: flex;
+                        flex-direction: column;
+                        position: relative;
+                        opacity: 0;
+
+                        .selected {
+                            background-color: var(--secondary);
+                            width: 220px;
+                            padding: 8px 12px;
+                            color: white;
+                            border-radius: 8px;
+                            margin-bottom: 8px;
+                            position: relative;
+
+                            order: 0;
+                        }
+
+                        .selected::after {
+                            content: "";
+                            background: url("../assets/user-form/arrow-down.svg");
+                            background-size: contain;
+                            background-repeat: no-repeat;
+
+                            position: absolute;
+                            height: 100%;
+                            width: 32px;
+                            right: 10px;
+                            top: 5px;
+
+                            transition: all 0.4s;
+                        }
+
+                        .active + .selected::after {
+                            transform: rotateX(180deg);
+                            top: -3px;
+                        }
+
+                        .options-container {
+                            border: thin solid white;
+                            color: white;
+                            background-color: var(--secondary);
+                            max-height: 0; 
+                            opacity: 0; 
+                            transition: all 0.4s;
+                            border-radius: 0 0 8px 8px;
+                            order: 1;
+                            pointer-events: none;
+            
+                            position: absolute;
+                            margin-top: 50px;
+                            width: 220px;
+                            height: 133px;
+                            
+
+                            .option {
+                                padding: 6px 12px;
+                                width: inherit;
+                                height: 33px;
+                                cursor: pointer;
+                            }
+
+                            .option:hover {
+                                background-color: var(--primary);
+                            }
+
+                            label {
+                                cursor: pointer;
+                            }
+
+                            .radio {
+                                display: none;
+                            }
+                        }
+
+                        .active {
+                            opacity: 1;
+                            max-height: 240px;
+                            overflow-y: scroll;
+                            margin-top: 80px;
+                            pointer-events: auto;
+                        }
+
+                        .options-container::-webkit-scrollbar {
+                            width: 0px;
+                            height: 0px;
+                        }
+
+                        .active ~ .search-box input {
+                            opacity: 1;
+                            pointer-events: auto;
+                        }
+
+                        .search-box {
+                            input {
+                                width: 100%;
+                                padding: 4px 10px;
+                                height: 33px;
+                                position: absolute;
+                                border-radius: 8px 8px 0 0;
+                                z-index: 100;
+                                border: 8px solid white;
+
+                                opacity: 0;
+                                pointer-events: none;
+                                transition: all 0.4s;
+                            }
+
+                            input:focus {
+                                outline: none;
+                            }
+                        }
+                    }      
+                }    
+
+                .right {
+                    opacity: 0;
+                    flex: 1;
+                    overflow: auto;
+                
+                    .button-row {
+                        display: flex;
+                        flex-wrap: wrap;
+                        justify-content: center;
+                
+                        .main {
+                            margin: 2px;
+                            background-color: var(--secondary);
+                            color: white;
+                            border-radius: 15px;
+                            border: none;
+                            padding: 2px 20px;
+                            position: relative;
+                            padding-left: 10px;
+                
+                            .x {
+                                position: absolute;
+                                border: none;
+                                background-color: transparent;
+                                right: 2px;
+                                top: 0.5px;
+                                color: var(--text);
+                                cursor: pointer;
+                            }
+                        }
+
+                        .ro {
+                            background-color: var(--green--dark);
+                        }
+
+                        .rw {
+                            background-color: var(--blue--dark);
+                        }
+
+                        .publish {
+                            background-color: var(--red--dark);
+                        }
+                    }
+                }
+            }
+
+            .row-three {
+                width: 80%;
+                height: 20%;
+                display: flex;
+                justify-content: space-evenly;
+                align-items: center;
+
+                .ad-links {
+                    font-size: 0px;
+                }
+
+                .creator,
+                .explorer-can-publish,
+                .explorer,
+                .viewer,
+                .same {
+                    opacity: 0;
+
+                    height: 75%;
+                    width: 18%;
+                    border-radius: 8px;
+                    border: none;
+                    background-color: var(--secondary);
+
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    z-index: 0;
+
+                    font-weight: 700;
+
+                    cursor: pointer;
+
+                    img {
+                        width: 50%;
+                        height: 50%;
+                    }
+                }
+
+                .user-roles-selection-active {
+                   background-color: white; 
+                }
+
+                .no-hover-effect {
+                    pointer-events: none; 
+                }
+
+                .creator:hover:not(.user-roles-selection-active),
+                .explorer-can-publish:hover:not(.user-roles-selection-active),
+                .explorer:hover:not(.user-roles-selection-active),
+                .viewer:hover:not(.user-roles-selection-active),
+                .same:hover:not(.user-roles-selection-active) {
+                    background-color: var(--primary);
+                }
+            }
+        }
+    }
+}
+
+
+/* ANIMATIONS */
+.fadeInDown {
+    -webkit-animation-name: fadeInDown;
+    animation-name: fadeInDown;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+  }
+  
+  @-webkit-keyframes fadeInDown {
+    0% {
+      opacity: 0;
+      -webkit-transform: translate3d(0, -100%, 0);
+      transform: translate3d(0, -100%, 0);
+    }
+    100% {
+      opacity: 1;
+      -webkit-transform: none;
+      transform: none;
+    }
+  }
+  
+  @keyframes fadeInDown {
+    0% {
+      opacity: 0;
+      -webkit-transform: translate3d(0, -100%, 0);
+      transform: translate3d(0, -100%, 0);
+    }
+    100% {
+      opacity: 1;
+      -webkit-transform: none;
+      transform: none;
+    }
+  }
+  
+  /* Simple CSS3 Fade-in Animation */
+  @-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+  @-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+  @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+  
+  .fadeIn {
+    opacity:0;
+    -webkit-animation:fadeIn ease-in 1;
+    -moz-animation:fadeIn ease-in 1;
+    animation:fadeIn ease-in 1;
+  
+    -webkit-animation-fill-mode:forwards;
+    -moz-animation-fill-mode:forwards;
+    animation-fill-mode:forwards;
+  
+    -webkit-animation-duration:1s;
+    -moz-animation-duration:1s;
+    animation-duration:1s;
+  }
+  
+  .fadeIn.first {
+    opacity: 1;
+    -webkit-animation-delay: 0.4s;
+    -moz-animation-delay: 0.4s;
+    animation-delay: 0.4s;
+  }
+  
+  .fadeIn.second {
+    opacity: 1;
+    -webkit-animation-delay: 0.6s;
+    -moz-animation-delay: 0.6s;
+    animation-delay: 0.6s;
+  }
+  
+  .fadeIn.third {
+    opacity: 1;
+    -webkit-animation-delay: 0.8s;
+    -moz-animation-delay: 0.8s;
+    animation-delay: 0.8s;
+  }
+  
+  .fadeIn.fourth {
+    opacity: 1;
+    -webkit-animation-delay: 1s;
+    -moz-animation-delay: 1s;
+    animation-delay: 1s;
+  }
+
+  .fadeIn.fived {
+    opacity: 1;
+    -webkit-animation-delay: 1.2s;
+    -moz-animation-delay: 1.2s;
+    animation-delay: 1.2s;
+  }
+
+  .fadeIn.sixth {
+    opacity: 1;
+    -webkit-animation-delay: 1.4s;
+    -moz-animation-delay: 1.4s;
+    animation-delay: 1.4s;
+  }

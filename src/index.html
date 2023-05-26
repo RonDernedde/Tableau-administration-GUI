@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+
+    <title>Orbit</title>
+</head>
+<body>
+
+    <!-- NAVIGATION PAGE -->
+    <div class="page-banner hidden">
+        <div class="left">
+            <h2>Welcome back <span class="magic">Placeholder</span>,</h2>
+            <p>
+                Please select a form that you want to use. You can select a form by clicking on the icons in the orbit at the right.
+                If you need help check out the tutorials :)
+            </p>
+            <button>View Quick Demo <img src="assets\icon-play-button.png" alt=""></button>
+        </div>
+        <div class="right">
+            <div class="orbit">
+                <div class="center-image">
+                    <img src="assets\icon-tableau.png" alt="">
+                </div>
+                <ul>
+                    <li>
+                        <img src="assets\icon-change-groups.svg" alt="">
+                        <p>Add users to your groups!</p>
+                    </li>
+                    <li>
+                        <img src="assets\icon-create-secret-folder.svg" alt="">
+                        <p>Create a protected/secret folder!</p>
+                    </li>
+                    <li>
+                        <img src="assets\icon-create-secret-folder.svg" alt="">
+                        <p>Create a new user group!</p>
+                    </li>
+                    <li>
+                        <img src="assets\icon-logout.svg" alt="">
+                        <p>See you soon!</p>
+                    </li>
+                    <li>
+                        <img src="assets\icon-create-top-level-folder.svg" alt="">
+                        <p>Create a new project!</p>
+                    </li>
+                    <li>
+                        <img src="assets\icon-user-forms.svg" alt="">
+                        <p>Epic user form!</p>
+                    </li>
+                    <li>
+                        <img src="assets\icon-mail.svg" alt="">
+                        <p>Write an email to the Tableau Community!</p>
+                    </li>
+                    <li>
+                        <img src="assets\icon-snowflake-reporting.svg" alt="">
+                        <p>View the audit!</p>
+                    </li>
+                </ul>
+            </div>    
+        </div>
+    </div>
+
+
+    <!-- BEGIN EMAIL FORM -->
+    <div class="email-form-container hidden">
+        <div class="email-form">
+            <div class="main-content">
+                <div class="left">
+                    <p>To</p>
+                    <input class="to"></input>
+
+                    <p>Subject</p>
+                    <input class="subject"></input>
+
+                    <input type="file" id="file-input" style="display: none;">
+                    <p class="msg">Message</p>
+                    <div id="text-editor" class="message"> </div>
+                    
+                    <button id="send-email-button"> <img src="assets\email-form\icon-mail.svg" alt=""> Send Email</button>
+                </div>
+                <div class="right" id="right">
+                    <img src="assets\email-form\ilustration-email.png" alt="">
+                    <svg style="display: none;">
+                        <defs>
+                            <filter id="noise">
+                                <feTurbulence
+                                    baseFrequency="0.7,0.8"
+                                    seed="0"
+                                    type="fractalNoise"
+                                >
+                                    <animate
+                                        attributeName="seed"
+                                        values="0;100"
+                                        dur="800ms"
+                                        repeatCount="1"
+                                        begin="right.mouseenter"
+                                    />
+                                </feTurbulence>
+                                <feDisplacementMap 
+                                    in="SourceGraphic" 
+                                    in2="static" 
+                                    scale="0"
+                                >
+                                    <animate
+                                        attributeName="scale"
+                                        values="0;40;0"
+                                        dur="800ms"
+                                        repeatCount="1"
+                                        begin="right.mouseenter"
+                                    />
+                                </feDisplacementMap>
+                            </filter>
+                        </defs>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- BEGIN EPIC USER FORM FORM -->
+    <div class="user-form-container">
+        <div class="user-form">
+            <!-- USER TABLE -->
+            <div class="left">
+                <div class="table-container">
+
+                </div>
+            </div>
+            <div class="right">
+                <!-- CREATE USER? -->
+                <!-- DELETE -->
+                <p id="header-one" class="headers">Action to be taken for User:</p>
+                <div class="row-one">
+                    <button class="create">
+                        <img width="64" height="64" src="assets\user-form\icons8-user-64-plus.png">
+                        <p class="ad-links"> <a  href="https://icons8.com/icon/dnHVPz7tEIi7/user">User</a> icon by <a href="https://icons8.com">Icons8</a> </p>
+                        <p>Create</p>
+                    </button>
+                    <button class="delete">
+                        <img width="64" height="64" src="assets\user-form\icons8-user-64-minus.png">
+                        <p class="ad-links"> <a  href="https://icons8.com/icon/g42d9uHFVvlW/user">User</a> icon by <a href="https://icons8.com">Icons8</a> </p>
+                        <p>Delete</p>
+                    </button>
+                    <button class="existing">
+                        <img width="64" height="64" src="https://img.icons8.com/external-kiranshastry-lineal-color-kiranshastry/64/external-user-management-kiranshastry-lineal-color-kiranshastry-4.png" alt="external-user-management-kiranshastry-lineal-color-kiranshastry-4"/>
+                        <p class="ad-links"> <a  href="https://icons8.com/icon/LJgnxh9GQcaw/user">User</a> icon by <a href="https://icons8.com">Icons8</a> </p>
+                        <p>Only existing</p>
+                    </button>
+                </div>
+                <!-- ADD TO GROUP -->
+                <!-- DELETE FROM GROUP -->
+                <p id="header-two" class="headers header-two">Add or remove User from groups:</p>
+                <div id="user-form-row-two" class="row-two">
+                    <div class="left">
+                        <div id="user-form-select-box" class="select-box">
+                            <div class="options-container">
+                                <div class="option">
+                                    <input type="radio" class="radio" id="sience" name="category">
+                                    <label for="sience">None</label>
+                                </div>
+
+                                <div class="option">
+                                    <input type="radio" class="radio" id="automobiles" name="category">
+                                    <label for="automobiles">Automobiles_rw</label>
+                                </div>
+
+                                <div class="option">
+                                    <input type="radio" class="radio" id="art" name="category">
+                                    <label for="art">Art_publish</label>
+                                </div>
+
+                                <div class="option">
+                                    <input type="radio" class="radio" id="time" name="category">
+                                    <label for="time">Time_publish</label>
+                                </div>
+
+                                <div class="option">
+                                    <input type="radio" class="radio" id="time" name="category">
+                                    <label for="time">Nike_rw</label>
+                                </div>
+
+                                <div class="option">
+                                    <input type="radio" class="radio" id="time" name="category">
+                                    <label for="time">Addidas_ro</label>
+                                </div>
+
+                                <div class="option">
+                                    <input type="radio" class="radio" id="time" name="category">
+                                    <label for="time">Zalando_ro</label>
+                                </div>
+
+                                <div class="option">
+                                    <input type="radio" class="radio" id="time" name="category">
+                                    <label for="time">Apple_publish</label>
+                                </div>
+
+                                <div class="option">
+                                    <input type="radio" class="radio" id="time" name="category">
+                                    <label for="time">Samsung_publish</label>
+                                </div>
+
+                                <div class="option">
+                                    <input type="radio" class="radio" id="time" name="category">
+                                    <label for="time">Nintendo_rw</label>
+                                </div>
+
+                                <div class="option">
+                                    <input type="radio" class="radio" id="time" name="category">
+                                    <label for="time">X-Box_ro</label>
+                                </div>
+                            </div>
+                        
+                            <div class="selected">
+                                Select Video Category
+                            </div>
+
+                            <div class="search-box">
+                                <input type="text" placeholder="start typing...">
+                            </div>
+                        </div>
+                    </div>
+                    <div id="user-form-right" class="right">
+                        <div class="button-row">
+                             
+                        </div>
+                    </div>
+                </div>
+                 <!-- ASSIGN NEW ROLE -->
+                <p id="header-three" class="headers header-three">Assign a new role to the user:</p>
+                <div id="user-form-row-three" class="row-three">
+                    <button class="creator">
+                        <img width="64" height="64" src="https://img.icons8.com/external-kiranshastry-lineal-color-kiranshastry/64/external-certificate-online-learning-kiranshastry-lineal-color-kiranshastry-2.png">
+                        <p class="ad-links"> <a  href="https://icons8.com/icon/KGU2Umn3dvWA/certificate">Certificate</a> icon by <a href="https://icons8.com">Icons8</a> </p>
+                        <p>Creator</p>
+                    </button>
+                    <button class="explorer-can-publish">
+                        <img width="64" height="64" src="https://img.icons8.com/external-kiranshastry-lineal-color-kiranshastry/64/external-elearning-online-learning-kiranshastry-lineal-color-kiranshastry.png">
+                        <p class="ad-links"> <a  href="https://icons8.com/icon/DZ4ZCujBldPG/elearning">Elearning</a> icon by <a href="https://icons8.com">Icons8</a> </p>
+                        <p>Explorer CP</p>
+                    </button>
+                    <button class="explorer">
+                        <img width="64" height="64" src="https://img.icons8.com/external-kiranshastry-lineal-color-kiranshastry/64/external-student-online-learning-kiranshastry-lineal-color-kiranshastry-2.png">
+                        <p class="ad-links"> <a  href="https://icons8.com/icon/pEH3OMOuGxnp/student">Student</a> icon by <a href="https://icons8.com">Icons8</a> </p>
+                        <p>Explorer</p>
+                    </button>
+                    <button class="viewer">
+                        <img width="64" height="64" src="https://img.icons8.com/external-kiranshastry-lineal-color-kiranshastry/64/external-student-online-learning-kiranshastry-lineal-color-kiranshastry-1.png">
+                        <p class="ad-links"> <a  href="https://icons8.com/icon/LZe6wWgJmGp1/student">Student</a> icon by <a href="https://icons8.com">Icons8</a> </p>
+                        <p>Viewer</p>
+                    </button>
+                    <button class="same">
+                        <img width="64" height="64" src="https://img.icons8.com/external-kiranshastry-lineal-color-kiranshastry/64/external-group-miscellaneous-kiranshastry-lineal-color-kiranshastry.png">
+                        <p class="ad-links"> <a  href="https://icons8.com/icon/lAj8h80hm4eJ/group">Group</a> icon by <a href="https://icons8.com">Icons8</a> </p>
+                        <p>Stay</p>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- INCLUDES -->
+    
+    <script type="module" src="./js/js-email-form/email-form.js"></script>
+    <script src="./js/js-site-animations/site-animation.js"></script>
+    <script src="./js/js-user-form/js-user-form.js"></script>
+
+</body>
+</html>

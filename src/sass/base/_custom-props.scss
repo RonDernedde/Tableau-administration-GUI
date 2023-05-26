@@ -1,0 +1,32 @@
+@use 'sass:color';
+@use '../abstracts/' as *;
+
+// make files for the font and side colors and import them like the color variables
+
+$colors-side: (
+    "bg": #050b15,
+    "bg-div": #0C141F,
+    "text": #5ac7d8,
+    "primary": #897be0,
+    "secondary": #6f7cdd,
+    "accent": #90c4e4
+);
+
+:root{
+    @each $name, $value in $colors {
+        --#{$name}--light: #{$value};
+        --#{$name}--dark: #{color.adjust($value, $lightness: -40%)};
+    }
+
+    @each $name, $value in $colors-side {
+        --#{$name}: #{$value};
+    }
+
+    @font-face {
+        font-family: 'TUI-Type';
+        src: url('src/assets/webfonts/TUIType_CYRL_W_Bd.eot');
+        src: url('src/assets/webfonts/TUIType_CYRL_W_Bd.eot?#iefix') format('embedded-opentype');
+        font-weight: normal;
+        font-style: normal;
+    }
+}

@@ -18,12 +18,107 @@
             height: 100%;
 
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
+
+            .user-upload-options {
+                button {
+                    color: white;
+                    border: none;
+                    border-radius: 20px;
+                    width: 8.5rem;
+                    height: 2rem;
+                    position: relative;
+                    text-align: right;
+                    padding-right: 10px;
+                    background-color: var(--secondary);
+
+                    img {
+                        left: 8px;
+                        position: absolute;
+                        object-fit: contain;
+                        height: 25px;
+                        width: 25px;
+                    }
+                }
+
+                button:hover {
+                    cursor: pointer;
+                    background-color: var(--primary);
+                }
+
+                button:active {
+                    cursor: pointer;
+                    background-color: white;
+                }
+
+                .popup {
+                    display: none;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    position: fixed;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    height: 75vh;
+                    width: 30%;
+                    padding: 20px;
+                    background-color: var(--bg-div);
+                    border: thin solid white;
+                    border-radius: 10px;
+                    box-shadow: 0 2px 6px rgb(255, 255, 255);
+                    z-index: 9999;
+
+                    .separator-container {
+                        margin-bottom: 2%;
+
+                        p {
+                            color: white;
+                            display: inline-block;
+                        }
+    
+                        input {
+                            width: 30px;
+                            background-color: var(--bg-div);
+                            border: thin solid white;
+                            border-radius: 5px;
+                            color: white;
+                        }
+
+                        input[type="text"] {
+                            text-align: center;
+                            font-weight: bold;
+                        }
+                    }
+
+                    .in {
+                        width: 95%;
+                        height: 80%;
+
+                        color: white;
+
+                        background-color: var(--bg-div);
+                        border: thin solid white;
+                        border-radius: 5px;
+                    }
+
+                    button {
+                        background-color: var(--secondary);
+                        border: thin solid var(--secondary);
+                        border-radius: 5px;
+                        color: white;
+                        margin-top: 2%;
+                        cursor: pointer;
+                    }    
+                }
+            }
 
             .table-container {
                 width: 80%;
                 height: 80%;
+                background-color: aquamarine;
             }
         }
 

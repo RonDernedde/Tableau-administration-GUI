@@ -1,3 +1,6 @@
+//import Handsontable from 'handsontable';
+
+
 const createButtonElement = document.querySelector('.create');
 const deleteButtonElement = document.querySelector('.delete');
 const existingButtonElement = document.querySelector('.existing');
@@ -162,3 +165,38 @@ document.addEventListener("click", function(event) {
     }
   }
 });
+
+
+// handle click open event and show the popup
+document.getElementById("open-popup").addEventListener("click", function() {
+  document.getElementById("upload-popup").style.display = "flex";
+});
+
+// handle click close event and hide the popup
+document.getElementById("closeButton").addEventListener("click", function() {
+  document.getElementById("upload-popup").style.display = "none";
+});
+
+// handle input of popup
+const textareaElement = document.querySelector('.in');
+const seperatorElement = document.getElementById('separator');
+
+seperatorElement.addEventListener('keyup', event => {
+  const separator = event.key;
+  let text = textareaElement.value;
+
+  const possibleEnds = ['.com', '.net', '.org', '.edu', '.gov', '.mil', '.co.uk', '.de', '.fr', '.ca'];
+  possibleEnds.forEach(e => {
+    let match;
+    const regex = new RegExp(e, 'g');
+    regex.lastIndex = 0; 
+
+    while ((match = regex.exec(text)) !== null) {
+      const insertIndex = match.index + match[0].length; 
+      text = text.substring(0, insertIndex) + separator + text.substring(insertIndex);
+    }
+  });
+
+  textareaElement.value = text;
+});
+

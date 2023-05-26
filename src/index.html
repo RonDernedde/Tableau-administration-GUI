@@ -7,7 +7,9 @@
     
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/handsontable/dist/handsontable.full.min.css" />
     <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/handsontable/dist/handsontable.full.min.js"></script>
 
     <title>Orbit</title>
 </head>
@@ -128,6 +130,21 @@
         <div class="user-form">
             <!-- USER TABLE -->
             <div class="left">
+                <div class="user-upload-options">
+                    <button><img src="assets/user-form/icon-upload.svg" alt="">CSV-Upload</button>
+
+                    <button id="open-popup"><img src="assets/user-form/icon-chat.svg" alt="">Text-Upload</button>
+                    <div id="upload-popup" class="popup">
+                        <h1>Insert list of Users here:</h1>
+                        <div class="separator-container">
+                            <p>Please choose a seperator for the list of emails:</p>
+                            <input id="separator" type="text" placeholder="...">
+                        </div>
+                        <textarea class="in"></textarea>
+                        <button id="closeButton">Close</button>
+                    </div>
+                </div>
+                
                 <div class="table-container">
 
                 </div>
@@ -269,7 +286,7 @@
     
     <script type="module" src="./js/js-email-form/email-form.js"></script>
     <script src="./js/js-site-animations/site-animation.js"></script>
-    <script src="./js/js-user-form/js-user-form.js"></script>
+    <script type="module" src="./js/js-user-form/js-user-form.js"></script>
 
 </body>
 </html>

@@ -198,5 +198,82 @@ seperatorElement.addEventListener('keyup', event => {
   });
 
   textareaElement.value = text;
+
+  const values = textareaElement.value.split(separator).map(value => value.trim());
+
+  createUserRow(values);
+});
+
+
+const fileInput = document.getElementById('csvFileInput');
+const uploadButton = document.getElementById('uploadButton');
+document.getElementById("csv-upload-msg-container").style.display = "none";
+
+uploadButton.addEventListener('click', () => {
+  fileInput.click();
+});
+
+fileInput.addEventListener('change', () => {
+  const file = fileInput.files[0];
+  
+  if (file && file.type === 'text/csv' && file.name.endsWith('.csv')) {
+    const reader = new FileReader();
+    reader.onload = handleFileLoad;
+    reader.readAsText(file);
+  } else {
+    alert('Please select a semicolon-separated CSV file.');
+  }
+});
+
+function handleFileLoad(event) {
+  const csvMsgContainerElement = document.getElementById("csv-upload-msg-container");
+  csvMsgContainerElement.style.display = "flex";
+
+  setTimeout(() => {
+    csvMsgContainerElement.style.animation = "fade-out 2s ease forwards";
+  }, 5000); 
+
+  setTimeout(() => {
+    csvMsgContainerElement.style.display = "none";
+  }, 7000); 
+  
+  const csvData = event.target.result;
+
+  const values = csvData.split(",").map(value => value.trim());
+  values.shift();
+
+  createUserRow(values);
+}
+
+const tableContainerElement = document.querySelector('.table-container');
+
+function createUserRow(users) {
+  let isFirstIteration = true;
+
+  users.forEach(e => {
+    let row = `<div class="row"> <input type="text" value="${e}"> <button class="delete-button">X</button> </div>`;
+
+    if (isFirstIteration) {
+      row = `<div class="row"> <input class="first-input" type="text" value="${e}"> <button class="delete-button">X</button> </div>`;
+      isFirstIteration = false;
+    }
+
+    tableContainerElement.innerHTML += row;
+  });
+}
+
+// Attach click event listener to the document
+document.addEventListener("click", function(event) {
+  // Check if the clicked element is a button with class "x"
+  if (event.target.classList.contains("delete-button")) {
+    // Get the parent div of the clicked button
+    const parentDiv = event.target.parentNode;
+
+    // Remove the parent div and its grandparent div
+    parentDiv.remove();
+    if (parentDiv.parentNode) {
+      parentDiv.parentNode.remove();
+    }
+  }
 });
 

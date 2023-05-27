@@ -131,7 +131,8 @@
             <!-- USER TABLE -->
             <div class="left">
                 <div class="user-upload-options">
-                    <button><img src="assets/user-form/icon-upload.svg" alt="">CSV-Upload</button>
+                    <input type="file" id="csvFileInput" accept=".csv" style="display: none" />
+                    <button id="uploadButton"><img src="assets/user-form/icon-upload.svg" alt="">CSV-Upload</button>
 
                     <button id="open-popup"><img src="assets/user-form/icon-chat.svg" alt="">Text-Upload</button>
                     <div id="upload-popup" class="popup">
@@ -144,9 +145,14 @@
                         <button id="closeButton">Close</button>
                     </div>
                 </div>
-                
-                <div class="table-container">
 
+                <div id="csv-upload-msg-container" class="csv-upload-msg-container">
+                    <img class="excel" src="assets\user-form\excel.png">
+                    <p class="upload-message">The file was uploaded succesfully!</p>
+                </div>
+
+                <div class="table-container">
+                    
                 </div>
             </div>
             <div class="right">

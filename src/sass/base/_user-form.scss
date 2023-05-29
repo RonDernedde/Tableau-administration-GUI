@@ -256,7 +256,35 @@
             .table-container::-webkit-scrollbar-track:hover {
                 background-color: var(--bg-div);
             }
-              
+            
+            .table-options {
+                display: flex;
+                width: 80%;
+                justify-content: start;
+
+                button {
+                    margin-right: 10px;
+                    height: auto;
+                    width: auto;
+                    padding: 5px 10px;
+                    background-color: var(--secondary);
+                    border: thin solid var(--secondary);
+                    border-radius: 5px;
+                    color: white;
+                    margin-top: 2%;
+                    cursor: pointer;
+                }    
+
+                button:hover {
+                    cursor: pointer;
+                    background-color: var(--primary);
+                }
+
+                button:active {
+                    cursor: pointer;
+                    background-color: white;
+                }
+            }
         }
 
         .right {

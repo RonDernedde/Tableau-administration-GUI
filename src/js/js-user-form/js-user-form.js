@@ -1,5 +1,5 @@
 //import Handsontable from 'handsontable';
-
+import { ArrayTracker } from './arrayTracker.js';
 
 const createButtonElement = document.querySelector('.create');
 const deleteButtonElement = document.querySelector('.delete');
@@ -276,4 +276,54 @@ document.addEventListener("click", function(event) {
     }
   }
 });
+
+const tracker = new ArrayTracker();
+const clearTableButtonElement= document.querySelector(".clear-button");
+
+clearTableButtonElement.addEventListener("click", () => {
+  tableContainerElement.innerHTML = "";
+});
+
+const backTableButtonElement = document.querySelector(".back-button");
+const forwardTableButtonElement= document.querySelector(".forward-button");
+
+backTableButtonElement.addEventListener("click", e => {
+  tracker.moveToNext();
+  createUserRow(tracker.getCurrentElement); 
+});
+
+forwardTableButtonElement.addEventListener("click", e => {
+  tracker.moveToPrevious();
+  createUserRow(tracker.getCurrentElement); 
+});
+
+const observer = new MutationObserver((mutationsList, observer) => {
+  const rows = document.querySelectorAll(".row");
+  if (rows.length > 0) {
+    rows.forEach(row => {
+      const inputElement = row.querySelector("input");
+      tracker.add(inputElement.value);
+    });
+  } else {
+    console.log("No elements with class 'row' found.");
+  }
+
+  // Check for deleted rows
+  mutationsList.forEach(mutation => {
+    mutation.removedNodes.forEach(removedNode => {
+      // Check if removedNode is a row
+      if (removedNode.classList && removedNode.classList.contains("row")) {
+        const inputElement = removedNode.querySelector("input");
+        tracker.remove(inputElement.value);
+      }
+    });
+  });
+
+  console.log(tracker.array);
+});
+
+const config = { childList: true, subtree: true };
+observer.observe(tableContainerElement, config);
+
+
 

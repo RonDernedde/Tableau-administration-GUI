@@ -1,0 +1,56 @@
+.user-group-form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    height: 100vh;
+
+    .user-group-form {
+        width: 70%; 
+        height: 70%;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
+        display: flex;
+        background-color: var(--bg-div);
+    }
+
+    .right {
+        flex: 1;
+        background-color: aqua;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .left {
+        flex: 1;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .ag-root, 
+        .ag-header, 
+        .ag-body {
+            background: white;
+        } 
+
+        .all-users-grid {
+            margin-top: 10px;
+            width: 80%;
+            height: 80%;
+            border: none;
+            border-radius: 10px;
+            overflow: auto;
+        }
+
+        .ag-body-viewport {
+            background-color: rgb(255, 255, 255);
+        }
+
+        .ag-row {
+            width: 130%;
+        }
+    }
+}

@@ -310,6 +310,7 @@
                         Import Data from Excel
                         <span></span>
                     </button>
+                    <input type="file" id="file-input" accept=".xlsx, .xls" style="display: none">
                     <button id="text-data-button" class="text-data-button">
                         <span></span>
                         Import data from Textfield
@@ -318,7 +319,16 @@
                 </div>
                 
                 <dialog id="modal-text" class="modal-text">
-                    <button id="close-button-text" class="close-button-user">Close</button>
+                    <div class="actions">
+                        <button id="add-seperator-button">Add to table (no separator)</button>
+                        <button id="add-table-button">Add to table (separator)</button>
+                    </div>
+                    <div class="textarea">
+                        <textarea id="textarea"></textarea>
+                    </div>
+                    <div class="close-modal">
+                        <button id="close-button-text" class="close-button-user">Close</button>
+                    </div>
                 </dialog>
 
                 <dialog id="modal-user" class="modal-user">
@@ -338,8 +348,8 @@
     <script type="module" src="./js/js-email-form/email-form.js"></script>
     <script src="./js/js-site-animations/site-animation.js"></script>
     <script type="module" src="./js/js-user-form/js-user-form.js"></script>
-    <script  src="./js/js-user-group-form/user-group-form.js"></script>
-    <script  src="./js/js-user-group-form/ag-grid.js"></script>
+    <script src="./js/js-user-group-form/user-group-form.js"></script>
+    <script src="./js/js-user-group-form/ag-grid.js"></script>
     
 </body>
 </html>

@@ -212,6 +212,36 @@
             }
         }
 
+        .show-model {
+            opacity: 1;
+            animation: show 0.2s;
+        }
+
+        @keyframes show {
+            from {
+                opacity: 0;
+                transform: scale(0);
+            } to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .hide-model {
+            opacity: 0;
+            animation: hide .25s;
+        }
+
+        @keyframes hide {
+            from {
+                opacity: 1;
+                transform: scale(1);
+            } to {
+                opacity: 0;
+                transform: scale(0);
+            }
+        }
+
         .modal-text {
             position: absolute;
             top: 0;
@@ -220,6 +250,53 @@
             height: 100%;
             background-color: var(--bg-div);
             border: none;
+            flex-direction: column;
+
+            .actions {
+                flex: 1;
+
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                button {
+                    margin-top: 2%;
+                    margin-left: 4%;
+                    height: 20%;
+                    width: 20%;
+                }
+            }
+
+            .textarea {
+                width: 100%;
+                height: 80%;
+                
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                textarea {
+                    height: 100%;
+                    width: 80%;
+                    max-width: 80%;
+                    max-height: 100%;
+                    border-radius: 10px;
+                }
+            }
+
+            .close-modal {
+                flex: 1;
+
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                button {
+                    margin-top: 2%;
+                    height: 60%;
+                    width: 20%;
+                }
+            }
         }
     }
 }
